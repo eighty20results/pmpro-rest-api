@@ -1,0 +1,17 @@
+{
+  "name" : "Eighty/20 Results - REST API for PMPro",
+  "slug" : "pmpro-rest-api",
+  "download_url" : "https://eighty20results.com/protected-content/pmpro-rest-api/pmpro-rest-api-1.0.zip",
+  "version" : "1.0",
+  "tested": "4.6.1",
+  "requires": "3.9",
+  "author" : "Thomas Sjolshagen <thomas@eighty20results.com>",
+  "author_homepage": "https://eighty20results.com/thomas-sjolshagen",
+  "last_updated": "2016-11-05 12:00:00",
+  "homepage": "https://eighty20results.com/wordpress-plugins/pmpro-rest-api/",
+  "sections" : {
+    "description" : "",
+    "changelog": "",
+    "faq": "<h3>I found a bug in the plugin.</h3>Please report your issue to us by using the <a href='https://eighty20results.com/forums/support/' target='_blank'>Support Forum</a> on The Eighty / 20 Website and we'll normally respond within 1 business day."
+    }
+}
