@@ -1,12 +1,12 @@
 <?php
 /*
-Plugin Name: Eighty/20 Results - New Plugin Framework for Paid Memberships Pro
+Plugin Name: Eighty/20 Results - REST API add-on for Paid Memberships Pro
 Plugin URI: https://eighty20results.com/wordpress-plugins/new-plugin-framework/
-Description: TODO - Enter description here
+Description: Adds REST API endpoints for Paid Memberships Pro
 Version: 1.0
 Author: Eighty / 20 Results by Wicked Strong Chicks, LLC <thomas@eighty20results.com>
 Author URI: https://eighty20results.com/thomas-sjolshagen/
-Text Domain: TOD: Enter text domain here
+Text Domain: e20rrapi
 Domain Path: /languages
 License:
 
@@ -138,7 +138,7 @@ class pmproRestAPI extends WP_REST_Controller {
 
 		if ( false === $this->logged_in || false === current_user_can( 'manage_options' ) ) {
 
-			return new WP_Error( 'pmpro_rest_access', __( 'User does not have access to the PMPro REST API', 'pmpro' ) );
+			return new WP_Error( 'pmpro_rest_access', __( 'User does not have access to the PMPro REST API', 'e20rrapi' ) );
 		}
 
 		$post_id                  = $request['post'];    //post id to check
@@ -165,7 +165,7 @@ class pmproRestAPI extends WP_REST_Controller {
 
 		if ( false === $this->logged_in || false === current_user_can( 'manage_options' ) ) {
 
-			return new WP_Error( 'pmpro_rest_access', __( 'User does not have access to the PMPro REST API', 'pmpro' ) );
+			return new WP_Error( 'pmpro_rest_access', __( 'User does not have access to the PMPro REST API', 'e20rrapi' ) );
 		}
 
 		$user_id = $request['user'];
