@@ -65,6 +65,7 @@ class pmproRestAPI extends WP_REST_Controller {
 		$this->option_name = strtolower( get_class( $this ) );
 
 		add_action( 'plugins_loaded', array( $this, 'addRoutes' ) );
+		add_action( 'http_api_curl', array( $this, 'force_tls_12' ) );
 	}
 
 	/**
@@ -208,6 +209,17 @@ class pmproRestAPI extends WP_REST_Controller {
 	}
 
 	/**
+	 * Connect to the license server using TLS 1.2
+	 *
+	 * @param $handle - File handle for the pipe to the CURL process
+	 */
+	public function force_tls_12( $handle ) {
+
+		// set the CURL option to use.
+		curl_setopt( $handle, CURLOPT_SSLVERSION, 6 );
+	}
+
+	/**
 	 * Autoloader class for the plugin.
 	 *
 	 * @param string $class_name Name of the class being attempted loaded.
@@ -234,16 +246,19 @@ class pmproRestAPI extends WP_REST_Controller {
 	} // End of autoloader method
 }
 
-// TODO: Update newPluginFramework to match class name
+/**
+ * Configure autoloader
+ */
 spl_autoload_register( array( pmproRestAPI::get_instance(), '__class_loader' ) );
 add_action( 'plugins_loaded', 'pmproRestAPI::get_instance' );
 
-
+/**
+ * Configure one-click update
+ */
 if ( ! class_exists( '\\PucFactory' ) ) {
 	require_once( plugin_dir_path( __FILE__ ) . 'plugin-updates/plugin-update-checker.php' );
 }
 
-// TODO: Fix paths for updateChecker
 $plugin_updates = \PucFactory::buildUpdateChecker(
 	'https://eighty20results.com/protected-content/pmpro-rest-api/metadata.json',
 	__FILE__,

@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+#
+# Build script for Eighty/20 Results - REST API add-on for Paid Memberships Pro
+#
+# Copyright (c) 2015 - 2016 Eighty/20 Results by Wicked Strong Chicks, LLC
+#
 short_name="pmpro-rest-api"
 server="eighty20results.com"
 sed=/usr/bin/sed
