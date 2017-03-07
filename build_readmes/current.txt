@@ -1,10 +1,1 @@
-ENHANCEMENT: Update plugin header
-ENHANCEMENT: Update licence text
-ENHANCEMENT: Add conditional definition of pmproRestAPI class
-ENHANCEMENT: Refactor for WP code style
-ENHANCEMENT: Add stub for plugin activation
-ENHANCEMENT: Add stub for plugin deactivation
-ENHANCEMENT: Add initial function to support different post types, including Custom Post Types (CPTs)
-ENHANCEMENT: Simplify routes for endpoints/requests
-ENHANCEMENT: Use plugin slug as translation domain
-ENHANCEMENT: Add & update the readme.txt file
+BUG/FIX: Didn't return error for invalid user IDs
