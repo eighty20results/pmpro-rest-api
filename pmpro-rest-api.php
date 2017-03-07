@@ -3,7 +3,7 @@
 Plugin Name: REST API Endpoints for Paid Memberships Pro
 Plugin URI: https://eighty20results.com/wordpress-plugins/pmpro-rest-api/
 Description: Adds REST API endpoints for Paid Memberships Pro
-Version: 1.1
+Version: 1.2
 Author: eighty20results
 Author URI: https://eighty20results.com/thomas-sjolshagen/
 Text Domain: pmpro-rest-api
@@ -31,7 +31,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
 
 defined( 'ABSPATH' ) || die( 'Cannot access plugin sources directly' );
-define( 'E20R_PMPRORESTAPI_VER', '1.1' );
+define( 'E20R_PMPRORESTAPI_VER', '1.2' );
 
 if ( ! class_exists( '\\pmproRestAPI' ) ) {
 
