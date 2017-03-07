@@ -3,7 +3,7 @@
 Plugin Name: REST API Endpoints for Paid Memberships Pro
 Plugin URI: https://eighty20results.com/wordpress-plugins/pmpro-rest-api/
 Description: Adds REST API endpoints for Paid Memberships Pro
-Version: 1.2
+Version: 1.2.1
 Author: eighty20results
 Author URI: https://eighty20results.com/thomas-sjolshagen/
 Text Domain: pmpro-rest-api
@@ -31,7 +31,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
 
 defined( 'ABSPATH' ) || die( 'Cannot access plugin sources directly' );
-define( 'E20R_PMPRORESTAPI_VER', '1.2' );
+define( 'E20R_PMPRORESTAPI_VER', '1.2.1' );
 
 if ( ! class_exists( '\\pmproRestAPI' ) ) {
 
@@ -177,11 +177,12 @@ if ( ! class_exists( '\\pmproRestAPI' ) ) {
 
 			$user_id = $request['user'];    //user id passed in
 
-			if ( empty( $user_id ) ) {
-				return new WP_Error( 'pmpro_rest_access', __( 'Cannot validate access for unknown user ID', 'pmpro-rest-api' ) );;
+			$this->user      = get_user_by( 'ID', $user_id );
+
+			if ( empty( $this->user ) ) {
+				return new WP_Error( 'pmpro_rest_access', __( 'Cannot validate access for unknown/invalid user', 'pmpro-rest-api' ) );;
 			}
 
-			$this->user      = get_user_by( 'ID', $user_id );
 			$this->logged_in = $this->user->exists();
 
 			if ( false === $this->logged_in ) {
@@ -206,12 +207,15 @@ if ( ! class_exists( '\\pmproRestAPI' ) ) {
 
 			$user_id = $request['user'];    //optional user id passed in
 
-			if ( empty( $user_id ) ) {
-				return new WP_Error( 'pmpro_rest_access', __( 'Cannot find membership level for unknown user ID', 'pmpro-rest-api' ) );;
+			$this->user      = get_user_by( 'ID', $user_id );
+
+			if ( empty( $this->user ) ) {
+
+				return new WP_Error( 'pmpro_rest_access', __( 'Cannot check membership level for unknown/invalid user', 'pmpro-rest-api' ) );;
 			}
 
-			$this->user      = get_user_by( 'ID', $user_id );
 			$this->logged_in = $this->user->exists();
+
 
 			if ( false === $this->logged_in ) {
 
