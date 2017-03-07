@@ -2,16 +2,16 @@
   "name" : "Eighty/20 Results - REST API for PMPro",
   "slug" : "pmpro-rest-api",
   "download_url" : "https://eighty20results.com/protected-content/pmpro-rest-api/pmpro-rest-api-1.0.zip",
-  "version" : "1.0",
-  "tested": "4.6.1",
-  "requires": "3.9",
+  "version" : "1.1",
+  "tested": "4.7.2",
+  "requires": "4.4",
   "author" : "Thomas Sjolshagen <thomas@eighty20results.com>",
   "author_homepage": "https://eighty20results.com/thomas-sjolshagen",
-  "last_updated": "2016-11-05 12:00:00",
+  "last_updated": "2017-03-06 23:30:00",
   "homepage": "https://eighty20results.com/wordpress-plugins/pmpro-rest-api/",
   "sections" : {
-    "description" : "",
-    "changelog": "",
+    "description" : "Initial release of REST API add-on for PMPro. Supports access check (hasaccess endpoint) for a Post based on supplied post ID [post=<numeric ID>] user ID [user=<numeric ID>], and level ID [levels=<numeric ID>]. Supports identifying the current membership level (getlevelforuser endpoint) based on supplied user=<numeric id> ",
+    "changelog": "<h3>1.1</h3><ol><li>BUG/FIX: Endpoint fixed for Checking access to a post for a user of a certain level (hasaccess)</li><li>BUG/FIX: Endpoint fixed for getting the membership level for a specific user ID (getmembershiplevel)</li></ol>",
     "faq": "<h3>I found a bug in the plugin.</h3>Please report your issue to us by using the <a href='https://eighty20results.com/forums/support/' target='_blank'>Support Forum</a> on The Eighty / 20 Website and we'll normally respond within 1 business day."
     }
 }

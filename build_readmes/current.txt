@@ -1,0 +1,2 @@
+BUG/FIX: Endpoint fixed for Checking access to a post for a user of a certain level (hasaccess)
+BUG/FIX: Endpoint fixed for getting the membership level for a specific user ID (getmembershiplevel)
