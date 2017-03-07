@@ -46,3 +46,5 @@ crashlytics-build.properties
 fabric.properties
 
 /build/
+/build_readmes/readme_changelog.txt
+/build_readmes/json_changelog.txt
