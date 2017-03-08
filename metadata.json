@@ -1,8 +1,8 @@
 {
   "name" : "REST API Endpoints for Paid Memberships Pro",
   "slug" : "pmpro-rest-api",
-  "download_url" : "https://eighty20results.com/protected-content/pmpro-rest-api/pmpro-rest-api-1.2.1.zip",
-  "version" : "1.2.1",
+  "download_url" : "https://eighty20results.com/protected-content/pmpro-rest-api/pmpro-rest-api-1.3.zip",
+  "version" : "1.3",
   "tested": "4.7.3",
   "requires": "4.4",
   "author" : "Thomas Sjolshagen <thomas@eighty20results.com>",
@@ -11,7 +11,7 @@
   "homepage": "https://eighty20results.com/wordpress-plugins/pmpro-rest-api/",
   "sections" : {
     "description" : "REST API Endpoints for Paid Memberships Pro. Supports access check (hasaccess endpoint) for a Post based on supplied post ID [<numeric ID>], and a user ID [<numeric ID>]. Supports identifying the current membership level (getlevelforuser endpoint) based on supplied <numeric user ID>",
-    "changelog": "<h3>1.2.1</h3><ol><li>BUG/FIX: Didn't return error for invalid user IDs</li></ol><h3>1.2</h3><ol><li>ENHANCEMENT: Update plugin header</li><li>ENHANCEMENT: Update licence text</li><li>ENHANCEMENT: Add conditional definition of pmproRestAPI class</li><li>ENHANCEMENT: Refactor for WP code style</li><li>ENHANCEMENT: Add stub for plugin activation</li><li>ENHANCEMENT: Add stub for plugin deactivation</li><li>ENHANCEMENT: Add initial function to support different post types, including Custom Post Types (CPTs)</li><li>ENHANCEMENT: Simplify routes for endpoints/requests</li><li>ENHANCEMENT: Use plugin slug as translation domain</li><li>ENHANCEMENT: Add & update the readme.txt file</li></ol><h3>1.1</h3><ol><li>BUG/FIX: Endpoint fixed for Checking access to a post for a user of a certain level (hasaccess)</li><li>BUG/FIX: Endpoint fixed for getting the membership level for a specific user ID (getmembershiplevel)</li></ol>",
+    "changelog": "<h3>1.3</h3><ol><li>ENHANCEMENT: Added custom configurable capability access check</li></ol><h3>1.2.1</h3><ol><li>BUG/FIX: Didn't return error for invalid user IDs</li></ol><h3>1.2</h3><ol><li>ENHANCEMENT: Update plugin header</li><li>ENHANCEMENT: Update licence text</li><li>ENHANCEMENT: Add conditional definition of pmproRestAPI class</li><li>ENHANCEMENT: Refactor for WP code style</li><li>ENHANCEMENT: Add stub for plugin activation</li><li>ENHANCEMENT: Add stub for plugin deactivation</li><li>ENHANCEMENT: Add initial function to support different post types, including Custom Post Types (CPTs)</li><li>ENHANCEMENT: Simplify routes for endpoints/requests</li><li>ENHANCEMENT: Use plugin slug as translation domain</li><li>ENHANCEMENT: Add & update the readme.txt file</li></ol><h3>1.1</h3><ol><li>BUG/FIX: Endpoint fixed for Checking access to a post for a user of a certain level (hasaccess)</li><li>BUG/FIX: Endpoint fixed for getting the membership level for a specific user ID (getmembershiplevel)</li></ol>",
     "faq": "<h3>I found a bug in the plugin.</h3>Please report your issue to us by using the <a href='https://eighty20results.com/forums/support/' target='_blank'>Support Forum</a> on The Eighty / 20 Website and we'll normally respond within 1 business day."
     }
 }

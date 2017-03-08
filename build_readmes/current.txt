@@ -1,1 +1,1 @@
-BUG/FIX: Didn't return error for invalid user IDs
+ENHANCEMENT: Added custom configurable capability access check
