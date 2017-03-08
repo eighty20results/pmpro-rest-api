@@ -110,7 +110,7 @@ if ( ! class_exists( '\\pmproRestAPI' ) ) {
 		public function checkAccessForRequest( $response, $post, $request ) {
 
 			if ( false == pmpro_has_membership_access( $post->ID ) ) {
-				$response = array( 'error' => "Access denied" );
+				$response = array( 'error' => esc_html__( "Access denied", "pmpro-rest-api" ) );
 			}
 
 			return $response;
@@ -129,6 +129,7 @@ if ( ! class_exists( '\\pmproRestAPI' ) ) {
 					array(
 						'methods'  => WP_REST_Server::READABLE,
 						'callback' => array( $this, 'checkAccess' ),
+						'permission_callback' => array( $this, 'hasRESTAccessPermission' ),
 						'args'     => array(
 							'post'   => array(
 								'validate_callback' => function ( $param, $request, $key ) {
@@ -154,6 +155,7 @@ if ( ! class_exists( '\\pmproRestAPI' ) ) {
 					array(
 						'methods'  => WP_REST_Server::READABLE,
 						'callback' => array( $this, 'getLevelForUser' ),
+						'permission_callback' => array( $this, 'hasRESTAccessPermission' ),
 						'args'     => array(
 							'user' => array(
 								'validate_callback' => function ( $param, $request, $key ) {
@@ -164,6 +166,23 @@ if ( ! class_exists( '\\pmproRestAPI' ) ) {
 					)
 				);
 			} );
+		}
+
+
+		/**
+		 * Check access permission to the PMPro REST API endpoints
+		 *
+		 * @return bool|WP_Error
+		 */
+		public function hasRESTAccessPermission() {
+
+			$required_capability = apply_filters( 'pmpro_restapi_access_role', 'manage_options' );
+
+			if ( ! current_user_can( $required_capability ) ) {
+				return new WP_Error( 'rest_forbidden', esc_html__( "REST API Access: Permission denied", "pmpro-rest-ap" ) );
+			}
+
+			return true;
 		}
 
 		/**
@@ -180,14 +199,14 @@ if ( ! class_exists( '\\pmproRestAPI' ) ) {
 			$this->user      = get_user_by( 'ID', $user_id );
 
 			if ( empty( $this->user ) ) {
-				return new WP_Error( 'pmpro_rest_access', __( 'Cannot validate access for unknown/invalid user', 'pmpro-rest-api' ) );;
+				return new WP_Error( 'rest_forbidden', esc_html__( 'Cannot validate access for unknown/invalid user', 'pmpro-rest-api' ) );;
 			}
 
 			$this->logged_in = $this->user->exists();
 
 			if ( false === $this->logged_in ) {
 
-				return new WP_Error( 'pmpro_rest_access', __( 'User does not have access to the PMPro REST API', 'pmpro-rest-api' ) );
+				return new WP_Error( 'rest_forbidden', esc_html__( 'REST API Access: User access denied', 'pmpro-rest-api' ) );
 			}
 
 			$post_id                  = $request['post'];    //post id to check
@@ -211,7 +230,7 @@ if ( ! class_exists( '\\pmproRestAPI' ) ) {
 
 			if ( empty( $this->user ) ) {
 
-				return new WP_Error( 'pmpro_rest_access', __( 'Cannot check membership level for unknown/invalid user', 'pmpro-rest-api' ) );;
+				return new WP_Error( 'rest_forbidden', esc_html__( 'Cannot check membership level for unknown/invalid user', 'pmpro-rest-api' ) );;
 			}
 
 			$this->logged_in = $this->user->exists();
@@ -219,7 +238,7 @@ if ( ! class_exists( '\\pmproRestAPI' ) ) {
 
 			if ( false === $this->logged_in ) {
 
-				return new WP_Error( 'pmpro_rest_access', __( 'User does not have access to the PMPro REST API', 'pmpro-rest-api' ) );
+				return new WP_Error( 'rest_forbidden', esc_html__( 'User does not have access to the PMPro REST API', 'pmpro-rest-api' ) );
 			}
 
 			return pmpro_getMembershipLevelForUser( $user_id );
