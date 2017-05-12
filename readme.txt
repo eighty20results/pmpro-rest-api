@@ -3,7 +3,7 @@ Contributors: eighty20results
 Tags: rest api, paid memberships pro, pmpro
 Requires at least: 4.4
 Tested up to: 4.7.3
-Stable tag: 1.3
+Stable tag: 1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,6 +63,10 @@ The following example URI would return an array containing the membership level 
 Result: `{"ID":"2","id":"2","subscription_id":"47","name":"Membership Level Name","description":"Membership level description.","expiration_number":"0","expiration_period":"","allow_signups":"1","initial_payment":"1.00","billing_amount":"1.50","cycle_number":"1","cycle_period":"Month","billing_limit":"0","trial_amount":"0.00","trial_limit":"0","code_id":"6","startdate":"1436162400","enddate":null}`
 
 == Changelog ==
+== 1.5 ==
+
+* ENHANCEMENT: Fix for REST API lookup by post or page slug (workaround)
+
 == 1.3 ==
 
 * ENHANCEMENT: Added custom configurable capability access check
