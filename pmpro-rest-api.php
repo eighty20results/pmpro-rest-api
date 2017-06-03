@@ -83,6 +83,10 @@ if ( ! class_exists( '\pmproRestAPI' ) ) {
 		
 		public function fixSlugRequestForPMPro() {
 			
+			if ( ! function_exists( 'pmpro_getOption' ) ) {
+				return;
+			}
+			
 			$filterqueries = pmpro_getOption( "filterqueries" );
 			
 			if ( ! empty( $filterqueries ) && ( defined( 'PMPRO_VERSION' ) && version_compare(PMPRO_VERSION, '1.9.2', '<' ) ) ) {
