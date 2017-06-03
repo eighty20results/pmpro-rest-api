@@ -104,6 +104,10 @@ if ( ! class_exists( '\pmproRestAPI' ) ) {
 			global $wpdb;
 			global $pmpro_pages;
 			
+			if ( ! function_exists( 'pmpro_getMembershipLevelsForUser' ) ) {
+				return $query;
+			}
+			
 			//hide pmpro pages from search results
 			if ( ! $query->is_admin && $query->is_search && empty( $query->query['post_parent'] ) ) {
 				if ( empty( $query->query_vars['post_parent'] ) )    //avoiding post_parent queries for now
@@ -234,6 +238,10 @@ if ( ! class_exists( '\pmproRestAPI' ) ) {
 		 */
 		public function checkAccessForRequest( $response, $post, $request ) {
 			
+			if ( !function_exists( 'pmpro_has_membership_access' ) ) {
+				return $response;
+			}
+			
 			if ( false == pmpro_has_membership_access( $post->ID ) ) {
 				$response = array( 'error' => esc_html__( "Access denied", "pmpro-rest-api" ) );
 			}
@@ -319,12 +327,16 @@ if ( ! class_exists( '\pmproRestAPI' ) ) {
 		 */
 		public function checkAccess( $request ) {
 			
+			if ( ! function_exists('pmpro_has_membership_access') ) {
+				return new WP_Error( 'rest_forbidden', esc_html__( 'Paid Memberships Pro plugin deactivated', 'pmpro-rest-api'));
+			}
+			
 			$user_id = $request['user'];    //user id passed in
 			
 			$this->user = get_user_by( 'ID', $user_id );
 			
 			if ( empty( $this->user ) ) {
-				return new WP_Error( 'rest_forbidden', esc_html__( 'Cannot validate access for unknown/invalid user', 'pmpro-rest-api' ) );;
+				return new WP_Error( 'rest_forbidden', esc_html__( 'Cannot validate access for unknown/invalid user', 'pmpro-rest-api' ) );
 			}
 			
 			$this->logged_in = $this->user->exists();
@@ -348,6 +360,10 @@ if ( ! class_exists( '\pmproRestAPI' ) ) {
 		 * @return bool|WP_Error
 		 */
 		public function getLevelForUser( $request ) {
+			
+			if ( ! function_exists('pmpro_getMembershipLevelForUser') ) {
+				return new WP_Error( 'rest_forbidden', esc_html__( 'Paid Memberships Pro plugin deactivated', 'pmpro-rest-api'));
+			}
 			
 			$user_id = $request['user'];    //optional user id passed in
 			
