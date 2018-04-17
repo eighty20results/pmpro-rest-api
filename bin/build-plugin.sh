@@ -6,7 +6,7 @@
 #
 short_name="pmpro-rest-api"
 server="eighty20results.com"
-include=(css languages license LICENSES plugin-updates ${short_name}.php README.txt)
+include=(css languages LICENSES plugin-updates ${short_name}.php readme.txt)
 exclude=(*.yml *.phar composer.* vendor)
 build=(plugin-updates/vendor/*.php)
 plugin_path="${short_name}"

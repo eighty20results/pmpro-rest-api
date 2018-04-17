@@ -1,0 +1,1 @@
+ENHANCEMENT: Fix for REST API lookup by post or page slug (workaround)
